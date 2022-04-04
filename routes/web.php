@@ -1,18 +1,23 @@
 <?php
 
+use App\Http\Controllers\ProfileC;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
 Route::get('/', function () {
-    return view('welcome');
+    return view('Welcome');
+})->name('utama');
+
+Route::get('/about', function () {
+    return view('about');
+})->name('tentang-saya');
+
+Route::get('/profile', [ProfileC::class,'index']);
+
+
+Route::get('/nama', function () {
+    return 'Wiwi Susanti';
+});
+
+Route::get('/dari-view', function () {
+    return view('Home');
 });
