@@ -22,7 +22,7 @@
         <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{{url('Soal')}}">Soal</a>
+        <a class="nav-link" href="{{url('data-blog')}}">Blog</a>
       </li>
     </ul>
   </div>

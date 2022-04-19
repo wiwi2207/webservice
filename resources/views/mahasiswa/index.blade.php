@@ -1,6 +1,6 @@
 @extends('template.master')
 
-@section('')
+@section('judul', 'data mahasiswa')
 
 @section('isi')
 <h1>Data Mahasiswa</h1>

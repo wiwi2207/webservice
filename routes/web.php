@@ -28,8 +28,12 @@ Route::view('master', 'template/master');
 //route untuk mahasiswa
 Route::get('data-mahasiswa', [MahasiswaC::class, 'index']);
 Route::get('add-mahasiswa', [MahasiswaC::class, 'create']);
+Route::post('simpan-mahasiswa', [MahasiswaC::class, 'store']);
+Route::delete('delete-mahasiswa/{id}', [MahasiswaC::class, 'destroy'])->name('delete.mahasiswa');
 
 //route untuk Blog
-Route::get('Blog', [BlogC::class, 'index']);
-Route::get('blog/create', ['BlogC@create'])->name('blog.create');
-Route::post('blog/store', ['BlogC@store'])->name('blog.store');
+Route::get('data-blog', [BlogC::class, 'index']);
+Route::get('add-blog', [BlogC::class, 'create']);
+Route::post('simpan-blog', [BlogC::class, 'store']);
+Route::get('edit-blog', [BlogC::class, 'edit'])->name('edit.blog');
+Route::delete('delete-blog/{id}', [BlogC::class, 'destroy'])->name('delete.blog');

@@ -1,6 +1,6 @@
 @extends('template.master')
 
-@section('judul')
+@section('judul', 'tambah mahasiswa')
 
 @section('isi')
     <h1>Tambah Mahasiswa</h1>
