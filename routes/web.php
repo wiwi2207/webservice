@@ -1,11 +1,13 @@
 <?php
 
 use App\Http\Controllers\BlogC;
+use App\Http\Controllers\KaryawanC;
 use App\Http\Controllers\ProfileC;
+use App\Models\Karyawan;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('blog.index');
+    return view('home');
 })->name('utama');
 
 Route::get('/about', function () {
@@ -37,3 +39,17 @@ Route::get('add-blog', [BlogC::class, 'create']);
 Route::post('simpan-blog', [BlogC::class, 'store']);
 Route::get('edit-blog', [BlogC::class, 'edit'])->name('edit.blog');
 Route::delete('delete-blog/{id}', [BlogC::class, 'destroy'])->name('delete.blog');
+
+Route::group(['middleware=>auth'], function() {
+//Route untuk Karyawan
+Route::get('data-karyawan', [KaryawanC::class, 'index'])->middleware('auth');
+Route::get('add-karyawan', [KaryawanC::class, 'create'])->name('create.karyawan')->middleware('auth');
+Route::post('simpan-karyawan', [KaryawanC::class, 'store']);
+Route::delete('delete-karyawan/{id}', [KaryawanC::class, 'destroy'])->name('delete.karyawan');
+Route::get('edit-karyawan/{id}', [KaryawanC::class, 'edit'])->name('edit.karyawan');
+Route::patch('update-karyawan/{karyawan}', [KaryawanC::class, 'update'])->name('update.karyawan');
+});
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
